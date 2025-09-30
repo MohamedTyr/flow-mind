@@ -28,7 +28,7 @@ The system enforces a strict separation of **conversational control flow** (Pyth
 ## How It Works
 
 A user input traverses a deterministic, multi-stage processing pipeline.
-<img width="1339" height="1793" alt="sequence" src="https://github.com/user-attachments/assets/91cf70c9-32b7-46a4-b720-763dbcc7cb4d" />
+<img width="1339" height="1793" alt="sequence (1)" src="https://github.com/user-attachments/assets/9a1b9d81-508c-4b4f-9826-c505b3cea370" />
 
 #### **Step 1: Ingestion & State Update**
 
