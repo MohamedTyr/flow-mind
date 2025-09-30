@@ -8,6 +8,7 @@ For example, the system makes separate LLM calls for classification, routing ana
 By implementing everything from the multi-stage intent classification to the context-aware routing manually, this project explores the first principles of building a robust, config-driven conversational engine. The result is a fully functional B2B sales bot that navigates a complex decision tree.
 
 ## System Architecture
+<img width="1336" height="700" alt="architecure" src="https://github.com/user-attachments/assets/4650aab3-8c38-4c84-809c-a3e0b39184fc" />
 
 The system enforces a strict separation of **conversational control flow** (Python engine) and **conversational content** (JSON configuration). The engine defines how dialogue is executed; the JSON defines what content is authorized and when it is emitted. Switching domains (sales, support, onboarding) is a configuration-only change; engine code is unaffected.
 
@@ -28,7 +29,7 @@ The system enforces a strict separation of **conversational control flow** (Pyth
 
 A user input traverses a deterministic, multi-stage processing pipeline.
 
-_[Mermaid Diagram: User Input → Classification → Context Update → Routing → Response Generation → Bot Output]_
+<img width="1286" height="1596" alt="sequence-diagram" src="https://github.com/user-attachments/assets/d2bc1bba-5783-4fa4-a91c-f66554cf158e" />
 
 #### **Step 1: Ingestion & State Update**
 
@@ -78,7 +79,7 @@ Emit the response. The `AnalyticsTracker` records the outcome and updates engage
 
 Engine logic is generic. The knowledge and flow are defined by a JSON file (`sales_flow.json`), which is the single source of truth for bot behavior.
 
-_[Mermaid Diagram: Node graph with edges labeled by intents.]_
+<img width="619" height="1162" alt="decision_tree" src="https://github.com/user-attachments/assets/daeba95a-2e74-4d23-a394-e1d5f6b1e663" />
 
 ### Key Concepts:
 
