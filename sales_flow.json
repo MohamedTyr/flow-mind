@@ -1,0 +1,2319 @@
+{
+  "metadata": {
+    "version": "2.2.0",
+    "created": "2025-09-15",
+    "last_modified": "2025-09-30",
+    "description": "Enterprise-grade conversational AI decision tree for B2B lead qualification",
+    "author": "",
+    "conversation_type": "outbound_sales_qualification",
+    "target_duration": "3-7_minutes",
+    "success_metrics": ["meeting_booked", "qualified_lead", "referral_obtained"]
+  },
+  "company_config": {
+    "company_name": "SynthWave",
+    "company_description": "AI-powered lead qualification solutions that transform marketing leads into sales-ready opportunities",
+    "sales_rep_name": "Alex",
+    "value_proposition": "help B2B marketing teams automate lead qualification to save their sales reps significant time while improving conversion rates by 15-25%",
+    "industry_focus": "B2B SaaS, Marketing Technology, Sales Operations",
+    "target_company_size": "50-500 employees",
+    "avg_deal_size": "$25,000-$150,000 ARR",
+    "roi_timeline": "90 days",
+    "competitive_advantages": [
+      "24/7 instant response capability",
+      "Advanced behavioral analysis",
+      "Seamless CRM integration",
+      "Multi-channel engagement"
+    ],
+    "company_facts": {
+      "founded": "2018",
+      "years_in_business": "6 years",
+      "headquarters": "Austin, Texas",
+      "team_size": "45 employees",
+      "clients_served": "200+ companies",
+      "industries": [
+        "SaaS",
+        "Professional Services",
+        "Manufacturing",
+        "Healthcare",
+        "Financial Services"
+      ],
+      "implementation_time": "1-2 weeks typical",
+      "support_availability": "24/7 technical support",
+      "lead_capacity": "1,000+ simultaneous conversations"
+    }
+  },
+  "conversation_settings": {
+    "max_conversation_length": 15,
+    "fallback_strategy": "graceful_exit",
+    "personalization_level": "high",
+    "tone": "professional_consultative",
+    "pace": "prospect_matched",
+    "objection_handling_style": "collaborative_reframe",
+    "sentiment_analysis_enabled": true,
+    "dynamic_tone_adjustment": true,
+    "industry_personalization": true
+  },
+  "start_node": "OPENING_WARM_INTRODUCTION",
+  "nodes": {
+    "OPENING_WARM_INTRODUCTION": {
+      "prompt": "Hi {client_name}, this is {sales_rep_name} from {company_name}. I'm reaching out because we help companies in your space to {value_proposition}. I noticed some patterns that could impact your Q4 pipeline. May I share one quick insight? It'll take 90 seconds.",
+      "prompt_summary": "90-second Q4 pipeline insight offer",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "opening",
+      "primary_objective": "secure_permission_to_continue",
+      "fallback_response": "I understand you're busy. Would a different time work better for a brief conversation?",
+      "paths": [
+        {
+          "intent": "AFFIRMATIVE_INTEREST",
+          "confidence_threshold": 0.8,
+          "target": "DISCOVERY_INITIAL_QUALIFICATION",
+          "transition_strategy": "immediate_value_delivery"
+        },
+        {
+          "intent": "OBJECTION_NO_TIME",
+          "confidence_threshold": 0.7,
+          "target": "TIME_CONSTRAINT_ACKNOWLEDGE",
+          "transition_strategy": "empathy_and_alternative"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "confidence_threshold": 0.6,
+          "target": "REJECTION_PATTERN_INTERRUPT",
+          "transition_strategy": "curiosity_gap_creation"
+        },
+        {
+          "intent": "OBJECTION_WRONG_PERSON",
+          "confidence_threshold": 0.9,
+          "target": "GATEKEEPER_NAVIGATION",
+          "transition_strategy": "respectful_redirection"
+        },
+        {
+          "intent": "SKEPTICAL_INQUIRY_WHO",
+          "confidence_threshold": 0.7,
+          "target": "CREDIBILITY_ESTABLISHMENT",
+          "transition_strategy": "authority_building"
+        },
+        {
+          "intent": "SKEPTICAL_INQUIRY_WHAT",
+          "confidence_threshold": 0.7,
+          "target": "VALUE_PROPOSITION_CLARIFICATION",
+          "transition_strategy": "benefit_focused_explanation"
+        },
+        {
+          "intent": "HOSTILE_RESPONSE",
+          "confidence_threshold": 0.9,
+          "target": "END_GRACEFUL_HOSTILE",
+          "transition_strategy": "immediate_respectful_exit"
+        },
+        {
+          "intent": "DIRECT_SALES_CHALLENGE",
+          "confidence_threshold": 0.8,
+          "target": "TRANSPARENCY_ACKNOWLEDGMENT",
+          "transition_strategy": "honest_positioning"
+        },
+        {
+          "intent": "DATA_SOURCE_CONCERN",
+          "confidence_threshold": 0.8,
+          "target": "PRIVACY_COMPLIANCE_EXPLANATION",
+          "transition_strategy": "transparency_and_compliance"
+        },
+        {
+          "intent": "AI_DETECTION_INQUIRY",
+          "confidence_threshold": 0.9,
+          "target": "AI_DISCLOSURE_PROFESSIONAL",
+          "transition_strategy": "confident_technology_positioning"
+        },
+        {
+          "intent": "AUDIO_QUALITY_ISSUE",
+          "confidence_threshold": 0.9,
+          "target": "TECHNICAL_DIFFICULTY_RESOLUTION",
+          "transition_strategy": "immediate_problem_solving"
+        },
+        {
+          "intent": "PRICE_OBJECTION_IMMEDIATE",
+          "confidence_threshold": 0.85,
+          "target": "ROI_CALCULATION_FOCUS",
+          "transition_strategy": "value_over_price_positioning"
+        },
+        {
+          "intent": "COMPETITOR_COMPARISON_REQUEST",
+          "confidence_threshold": 0.8,
+          "target": "COMPETITIVE_DIFFERENTIATION",
+          "transition_strategy": "differentiation_focused_response"
+        },
+        {
+          "intent": "FEATURE_SPECIFIC_INQUIRY",
+          "confidence_threshold": 0.75,
+          "target": "DETAILED_CAPABILITY_EXPLANATION",
+          "transition_strategy": "feature_benefit_translation"
+        },
+        {
+          "intent": "IMPLEMENTATION_CONCERN",
+          "confidence_threshold": 0.8,
+          "target": "IMPLEMENTATION_SIMPLICITY_ASSURANCE",
+          "transition_strategy": "simplicity_and_support_emphasis"
+        },
+        {
+          "intent": "SECURITY_COMPLIANCE_INQUIRY",
+          "confidence_threshold": 0.9,
+          "target": "SECURITY_COMPLIANCE_ASSURANCE",
+          "transition_strategy": "compliance_and_security_focus"
+        }
+      ]
+    },
+    "CREDIBILITY_ESTABLISHMENT": {
+      "prompt": "Fair question. I'm {sales_rep_name} from {company_name}. We help companies like [relevant industry example] increase sales efficiency by 20-30%. I'm calling you specifically because of your role in [relevant department] and some trends impacting pipeline conversion...",
+      "prompt_summary": "20-30% sales efficiency increase",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "credibility_building",
+      "primary_objective": "establish_authority_and_relevance",
+      "paths": [
+        {
+          "intent": "CONTINUE_INTEREST",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        },
+        {
+          "intent": "REMAINS_SKEPTICAL",
+          "target": "SOCIAL_PROOF_REINFORCEMENT"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "confidence_threshold": 0.6,
+          "target": "END_POLITE_DECLINE"
+        }
+      ]
+    },
+    "VALUE_PROPOSITION_CLARIFICATION": {
+      "prompt": "We handle initial lead conversations so your sales team only talks to qualified prospects. Think of it as a 24/7 AI sales development rep that learns from every interaction. To see if this is relevant for you, may I ask one qualifying question?",
+      "prompt_summary": "24/7 AI SDR for qualified prospects only",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "value_explanation",
+      "primary_objective": "create_relevance_and_transition_to_discovery",
+      "paths": [
+        {
+          "intent": "PERMISSION_GRANTED",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        },
+        {
+          "intent": "REQUEST_MORE_DETAILS",
+          "target": "DETAILED_CAPABILITY_EXPLANATION"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "confidence_threshold": 0.6,
+          "target": "REJECTION_PATTERN_INTERRUPT"
+        }
+      ]
+    },
+    "TRANSPARENCY_ACKNOWLEDGMENT": {
+      "prompt": "You're right, this is a sales call. I appreciate your directness. My goal is to see if we're a fit for your growth objectives. If not, we part ways professionally. Fair enough?",
+      "prompt_summary": "Honest sales approach - growth fit assessment",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "objection_handling",
+      "primary_objective": "reframe_sales_as_consultative_exploration",
+      "paths": [
+        {
+          "intent": "APPRECIATE_HONESTY",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        },
+        {
+          "intent": "REMAIN_RESISTANT",
+          "target": "FINAL_VALUE_PROPOSITION"
+        },
+        {
+          "intent": "TERMINATE_CALL",
+          "target": "END_RESPECTFUL_DECLINE"
+        }
+      ]
+    },
+    "PRIVACY_COMPLIANCE_EXPLANATION": {
+      "prompt": "Good question. We use publicly available sources like LinkedIn and industry directories - fully GDPR compliant. I'm happy to remove your info if you prefer. I reached out because of your role and some challenges I think you'd find relevant...",
+      "prompt_summary": "GDPR compliant public data sources",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "compliance_assurance",
+      "primary_objective": "address_privacy_concerns_and_redirect",
+      "paths": [
+        {
+          "intent": "REQUEST_REMOVAL",
+          "target": "END_DNC_COMPLIANCE"
+        },
+        {
+          "intent": "SATISFIED_CONTINUE",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        },
+        {
+          "intent": "STILL_CONCERNED",
+          "target": "DETAILED_PRIVACY_EXPLANATION"
+        }
+      ]
+    },
+    "AI_DISCLOSURE_PROFESSIONAL": {
+      "prompt": "Perceptive of you. Yes, I'm an AI assistant designed for B2B sales. The advantage is speed and efficiency - I can provide precise insights without typical sales call inefficiencies. Now, about your lead qualification process...",
+      "prompt_summary": "AI advantage - speed and efficiency",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "technology_positioning",
+      "primary_objective": "reframe_ai_as_efficiency_advantage",
+      "paths": [
+        {
+          "intent": "IMPRESSED_CONTINUE",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        },
+        {
+          "intent": "PREFER_HUMAN",
+          "target": "HUMAN_HANDOFF_OFFER"
+        },
+        {
+          "intent": "END_CALL_AI",
+          "target": "END_AI_PREFERENCE"
+        }
+      ]
+    },
+    "TECHNICAL_DIFFICULTY_RESOLUTION": {
+      "prompt": "I apologize for the audio quality. Let me speak more clearly. Can you hear me better now?",
+      "prompt_summary": "Audio quality improvement",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "technical_resolution",
+      "primary_objective": "resolve_communication_barrier",
+      "paths": [
+        {
+          "intent": "AUDIO_IMPROVED",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        },
+        {
+          "intent": "STILL_UNCLEAR",
+          "target": "ALTERNATIVE_COMMUNICATION_OFFER"
+        },
+        {
+          "intent": "CONNECTION_LOST",
+          "target": "END_TECHNICAL_DIFFICULTY"
+        }
+      ]
+    },
+    "DISCOVERY_INITIAL_QUALIFICATION": {
+      "prompt": "Perfect. How does your team currently qualify leads from marketing campaigns? What's your biggest bottleneck in that process?",
+      "prompt_summary": "Lead qualification process discovery",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "discovery",
+      "primary_objective": "identify_pain_points_and_qualify_opportunity",
+      "qualifying_questions": [
+        "Current lead volume per month",
+        "Conversion rate from lead to qualified opportunity",
+        "Time spent on initial qualification",
+        "Team size handling leads"
+      ],
+      "paths": [
+        {
+          "intent": "PAIN_MANUAL_PROCESSES",
+          "target": "SOLUTION_AUTOMATION_FOCUS"
+        },
+        {
+          "intent": "PAIN_LOW_CONVERSION",
+          "target": "SOLUTION_CONVERSION_OPTIMIZATION"
+        },
+        {
+          "intent": "PAIN_RESPONSE_TIME",
+          "target": "SOLUTION_SPEED_ADVANTAGE"
+        },
+        {
+          "intent": "PAIN_SCALING_CHALLENGES",
+          "target": "SOLUTION_SCALABILITY_FOCUS"
+        },
+        {
+          "intent": "PAIN_RESOURCE_CONSTRAINTS",
+          "target": "SOLUTION_EFFICIENCY_FOCUS"
+        },
+        {
+          "intent": "SATISFIED_CURRENT_PROCESS",
+          "target": "CHALLENGE_STATUS_QUO"
+        },
+        {
+          "intent": "MENTIONS_EXISTING_SOLUTION",
+          "target": "COMPETITIVE_DIFFERENTIATION"
+        },
+        {
+          "intent": "DEFLECTS_SPECIFICS",
+          "target": "ALTERNATIVE_DISCOVERY_APPROACH"
+        },
+        {
+          "intent": "INDICATES_POOR_FIT",
+          "target": "PROFESSIONAL_DISQUALIFICATION"
+        },
+        {
+          "intent": "REQUESTS_MORE_CONTEXT",
+          "target": "DETAILED_PROCESS_EXPLANATION"
+        },
+        {
+          "intent": "BUDGET_AUTHORITY_INQUIRY",
+          "confidence_threshold": 0.8,
+          "target": "BUDGET_AUTHORITY_QUALIFICATION",
+          "transition_strategy": "qualification_focused_discovery"
+        },
+        {
+          "intent": "DECISION_TIMELINE_INQUIRY",
+          "confidence_threshold": 0.7,
+          "target": "TIMELINE_QUALIFICATION",
+          "transition_strategy": "urgency_assessment"
+        },
+        {
+          "intent": "TEAM_SIZE_SCALING_CONCERN",
+          "confidence_threshold": 0.75,
+          "target": "SCALING_CHALLENGES_DISCOVERY",
+          "transition_strategy": "growth_pain_exploration"
+        },
+        {
+          "intent": "INTEGRATION_COMPLEXITY_CONCERN",
+          "confidence_threshold": 0.8,
+          "target": "TECHNICAL_INTEGRATION_ASSURANCE",
+          "transition_strategy": "technical_simplification"
+        }
+      ]
+    },
+    "SOLUTION_AUTOMATION_FOCUS": {
+      "prompt": "That manual workload sounds frustrating and time-consuming. That's exactly what we solve. Our AI handles 1,000+ simultaneous conversations while staying personalized. Based on what you've shared, a 15-minute demo would be valuable. The ROI calculation alone is worth your time.",
+      "prompt_summary": "1,000+ simultaneous personalized conversations",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "solution_positioning",
+      "primary_objective": "connect_solution_to_specific_pain_and_advance_to_demo",
+      "value_metrics": {
+        "time_savings": "15-25 hours per week",
+        "conversion_improvement": "15-25%",
+        "cost_reduction": "$50,000-$150,000 annually"
+      },
+      "paths": [
+        {
+          "intent": "STRONG_INTEREST",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "CAUTIOUS_INTEREST",
+          "target": "DEMO_SCHEDULING_CONSULTATIVE"
+        },
+        {
+          "intent": "COST_CONCERN",
+          "target": "ROI_CALCULATION_FOCUS"
+        },
+        {
+          "intent": "TIME_OBJECTION",
+          "target": "TIME_INVESTMENT_REFRAME"
+        },
+        {
+          "intent": "TEAM_RESISTANCE_CONCERN",
+          "confidence_threshold": 0.75,
+          "target": "CHANGE_MANAGEMENT_APPROACH",
+          "transition_strategy": "team_adoption_focus"
+        },
+        {
+          "intent": "PERFORMANCE_METRICS_INQUIRY",
+          "confidence_threshold": 0.8,
+          "target": "METRICS_AND_REPORTING_FOCUS",
+          "transition_strategy": "data_driven_results_emphasis"
+        },
+        {
+          "intent": "CUSTOMIZATION_REQUIREMENTS",
+          "confidence_threshold": 0.8,
+          "target": "CUSTOMIZATION_CAPABILITIES_DEMO",
+          "transition_strategy": "flexibility_and_adaptation_focus"
+        }
+      ]
+    },
+    "SOLUTION_CONVERSION_OPTIMIZATION": {
+      "prompt": "Low conversion rates mean money left on the table. Our AI gives every lead immediate, personalized follow-up with smart qualification. Clients typically see 15-25% conversion improvement within 90 days. A 15-minute demo would show exactly how this translates to revenue for you.",
+      "prompt_summary": "15-25% conversion improvement in 90 days",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "solution_positioning",
+      "primary_objective": "quantify_revenue_impact_and_advance_to_demo",
+      "paths": [
+        {
+          "intent": "REVENUE_FOCUSED_INTEREST",
+          "target": "DEMO_SCHEDULING_ROI_FOCUSED"
+        },
+        {
+          "intent": "SKEPTICAL_OF_CLAIMS",
+          "target": "SOCIAL_PROOF_AND_CASE_STUDIES"
+        },
+        {
+          "intent": "COMPETITIVE_COMPARISON",
+          "target": "DIFFERENTIATION_EXPLANATION"
+        }
+      ]
+    },
+    "SOLUTION_SPEED_ADVANTAGE": {
+      "prompt": "Speed is critical in lead response. Responding within 5 minutes can increase conversions by up to 21%. Our AI engages leads within seconds, 24/7. This alone generates 20-40% more opportunities from the same marketing spend. A 15-minute demo shows this in action - the competitive advantage is clear.",
+      "prompt_summary": "Instant response = 20-40% more opportunities",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "solution_positioning",
+      "primary_objective": "emphasize_competitive_advantage_and_urgency",
+      "paths": [
+        {
+          "intent": "COMPETITIVE_ADVANTAGE_INTEREST",
+          "target": "DEMO_SCHEDULING_URGENCY_FOCUSED"
+        },
+        {
+          "intent": "TECHNICAL_IMPLEMENTATION_CONCERN",
+          "target": "IMPLEMENTATION_SIMPLICITY_ASSURANCE"
+        },
+        {
+          "intent": "COST_CONCERN",
+          "target": "ROI_CALCULATION_FOCUS"
+        },
+        {
+          "intent": "WANTS_SPECIFIC_PRICING_NOW",
+          "target": "PRICING_DEFERRAL_TO_CUSTOMIZATION"
+        }
+      ]
+    },
+    "SOLUTION_SCALABILITY_FOCUS": {
+      "prompt": "Scaling lead qualification is expensive with human resources alone. Our platform handles hundreds of conversations simultaneously without losing quality. You could double or triple your lead volume without hiring anyone. A 15-minute demo shows how this scales with your growth.",
+      "prompt_summary": "2x-3x lead volume without new hires",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "solution_positioning",
+      "primary_objective": "address_growth_scalability_and_cost_efficiency",
+      "paths": [
+        {
+          "intent": "GROWTH_SCALING_INTEREST",
+          "target": "DEMO_SCHEDULING_GROWTH_FOCUSED"
+        },
+        {
+          "intent": "BUDGET_SCALING_CONCERN",
+          "target": "COST_SCALING_EXPLANATION"
+        },
+        {
+          "intent": "COST_CONCERN",
+          "target": "ROI_CALCULATION_FOCUS"
+        },
+        {
+          "intent": "WANTS_SPECIFIC_PRICING_NOW",
+          "target": "PRICING_DEFERRAL_TO_CUSTOMIZATION"
+        }
+      ]
+    },
+    "CHALLENGE_STATUS_QUO": {
+      "prompt": "Great that you have a solid process - you're ahead of most companies. Our best clients felt the same initially, but found that automating top-funnel qualification let their team focus on closing higher-value deals. Result: 15-30% more revenue from the same team size. Want to see how others in your space optimized this?",
+      "prompt_summary": "15-30% more revenue, same team size",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "status_quo_challenge",
+      "primary_objective": "create_curiosity_about_optimization_opportunities",
+      "paths": [
+        {
+          "intent": "CURIOUS_ABOUT_OPTIMIZATION",
+          "target": "DEMO_SCHEDULING_OPTIMIZATION_FOCUSED"
+        },
+        {
+          "intent": "DEFENSIVE_OF_CURRENT_PROCESS",
+          "target": "COLLABORATIVE_IMPROVEMENT_APPROACH"
+        },
+        {
+          "intent": "NOT_INTERESTED_CHANGE",
+          "target": "END_RESPECTFUL_TIMING"
+        }
+      ]
+    },
+    "COMPETITIVE_DIFFERENTIATION": {
+      "prompt": "Good - you're thinking strategically. [Competitor] is solid for [specific use case]. Companies often use us as a complement - we handle AI-driven qualification then pass hot leads to their existing system. It's about supercharging your current investment, not replacing it. Make sense?",
+      "prompt_summary": "Complement existing systems, not replace",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "competitive_positioning",
+      "primary_objective": "position_as_complement_not_replacement",
+      "paths": [
+        {
+          "intent": "INTEGRATION_INTEREST",
+          "target": "INTEGRATION_DEMO_FOCUS"
+        },
+        {
+          "intent": "REPLACEMENT_CONCERN",
+          "target": "COMPLEMENT_STRATEGY_EXPLANATION"
+        },
+        {
+          "intent": "TECHNICAL_INTEGRATION_QUESTION",
+          "target": "TECHNICAL_INTEGRATION_ASSURANCE"
+        }
+      ]
+    },
+    "DEMO_SCHEDULING_DIRECT": {
+      "prompt": "Excellent. Based on what you've shared, this will be valuable. I'll connect you with Jordan, our solutions specialist, for a 15-minute live demo. Jordan will show how this works with your specific volume and process. Available Tuesday afternoon or Thursday morning?",
+      "prompt_summary": "15-minute demo with Jordan - Tue/Thu options",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "scheduling",
+      "primary_objective": "secure_specific_meeting_time",
+      "paths": [
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "REQUESTS_ALTERNATIVE_TIME",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "SCHEDULING_HESITATION",
+          "target": "SCHEDULING_OBJECTION_HANDLING"
+        },
+        {
+          "intent": "COST_QUESTION_BEFORE_DEMO",
+          "target": "COST_DEFLECTION_TO_VALUE"
+        },
+        {
+          "intent": "TECHNICAL_QUESTION_BEFORE_DEMO",
+          "target": "TECHNICAL_DEFERRAL_TO_SPECIALIST"
+        },
+        {
+          "intent": "PROOF_REQUEST_BEFORE_DEMO",
+          "target": "SOCIAL_PROOF_TO_DEMO_BRIDGE"
+        }
+      ]
+    },
+    "DEMO_SCHEDULING_CONSULTATIVE": {
+      "prompt": "I appreciate your thoughtful approach. Given your challenges, a brief consultation with our specialist would be valuable - even if we're not the right fit. Jordan can show industry benchmarks and strategies you'll find useful regardless. Open to 15 minutes? I'll work around your schedule.",
+      "prompt_summary": "15-minute consultation with industry benchmarks",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "consultative_scheduling",
+      "primary_objective": "lower_commitment_threshold_while_maintaining_value",
+      "paths": [
+        {
+          "intent": "APPRECIATES_CONSULTATIVE_APPROACH",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "STILL_HESITANT",
+          "target": "ALTERNATIVE_ENGAGEMENT_OFFER"
+        },
+        {
+          "intent": "TIME_CONSTRAINT_OBJECTION",
+          "target": "TIME_EFFICIENCY_ASSURANCE"
+        }
+      ]
+    },
+    "MEETING_CONFIRMATION_SUCCESS": {
+      "prompt": "Perfect. Sending a calendar invite now for [day/time] with Jordan, our solutions specialist. You'll get confirmation with agenda and Jordan's contact info. Jordan will bring industry insights specific to your situation. Thanks for your time, {client_name} - this will be valuable.",
+      "prompt_summary": "Calendar invite sent with Jordan + industry insights",
+      "type": "END",
+      "endpoint_name": "SUCCESS_MEETING_BOOKED",
+      "success_metrics": {
+        "outcome": "meeting_scheduled",
+        "quality_score": "high",
+        "next_action": "demo_preparation"
+      }
+    },
+    "FLEXIBLE_SCHEDULING_ACCOMMODATION": {
+      "prompt": "Absolutely, I want to find a time that works perfectly for you. What day and time would be most convenient for you next week?",
+      "prompt_summary": "Flexible scheduling - your preferred time",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "flexible_scheduling",
+      "primary_objective": "accommodate_prospect_schedule_preferences",
+      "paths": [
+        {
+          "intent": "PROVIDES_SPECIFIC_AVAILABILITY",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "VAGUE_AVAILABILITY",
+          "target": "SCHEDULING_CLARIFICATION_REQUEST"
+        },
+        {
+          "intent": "SCHEDULING_UNCERTAINTY",
+          "target": "FOLLOW_UP_SCHEDULING_OFFER"
+        }
+      ]
+    },
+    "TIME_CONSTRAINT_ACKNOWLEDGE": {
+      "prompt": "I understand - your time is valuable. Our best clients felt the same initially. I can send a 2-minute video case study showing how a similar company achieved 35% more qualified leads. If it resonates, we'll schedule a call when convenient. If not, no worries. Fair enough?",
+      "prompt_summary": "2-minute video case study - 35% more leads",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "time_objection_handling",
+      "primary_objective": "provide_low_commitment_alternative_with_value",
+      "paths": [
+        {
+          "intent": "ACCEPTS_VIDEO_CASE_STUDY",
+          "target": "CASE_STUDY_DELIVERY_SETUP"
+        },
+        {
+          "intent": "PREFERS_QUICK_SUMMARY_NOW",
+          "target": "RAPID_VALUE_DELIVERY"
+        },
+        {
+          "intent": "REQUESTS_FUTURE_CALLBACK",
+          "target": "CALLBACK_SCHEDULING"
+        },
+        {
+          "intent": "DECLINES_ALL_OPTIONS",
+          "target": "END_RESPECTFUL_TIMING"
+        }
+      ]
+    },
+    "REJECTION_PATTERN_INTERRUPT": {
+      "prompt": "I understand - you probably get dozens of these calls. Before I go, one quick question: What would a lead qualification solution need to do to be worth interrupting your day? Genuinely curious about your perspective.",
+      "prompt_summary": "Pattern interrupt - what would be worth your time?",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "pattern_interrupt",
+      "primary_objective": "create_curiosity_and_reopen_conversation",
+      "paths": [
+        {
+          "intent": "ENGAGES_WITH_QUESTION",
+          "target": "CUSTOM_VALUE_PROPOSITION_BUILDING"
+        },
+        {
+          "intent": "PROVIDES_SPECIFIC_CRITERIA",
+          "target": "CRITERIA_MATCHING_RESPONSE"
+        },
+        {
+          "intent": "REMAINS_CLOSED",
+          "target": "FINAL_VALUE_NUGGET_OFFER"
+        },
+        {
+          "intent": "APPRECIATES_DIRECTNESS",
+          "target": "TRANSPARENT_CONVERSATION_RESET"
+        }
+      ]
+    },
+    "GATEKEEPER_NAVIGATION": {
+      "prompt": "I apologize for the confusion. Could you point me toward whoever handles lead generation strategy or sales process optimization? I want to reach the right decision-maker.",
+      "prompt_summary": "Find right decision-maker for lead gen/sales",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "gatekeeper_navigation",
+      "primary_objective": "obtain_correct_contact_information_respectfully",
+      "paths": [
+        {
+          "intent": "PROVIDES_REFERRAL_CONTACT",
+          "target": "REFERRAL_APPRECIATION_AND_TRANSITION"
+        },
+        {
+          "intent": "PROVIDES_DEPARTMENT_GUIDANCE",
+          "target": "DEPARTMENT_CONTACT_REQUEST"
+        },
+        {
+          "intent": "REFUSES_TO_PROVIDE_INFORMATION",
+          "target": "RESPECTFUL_GATEKEEPER_ACKNOWLEDGMENT"
+        },
+        {
+          "intent": "OFFERS_TO_TAKE_MESSAGE",
+          "target": "MESSAGE_TAKING_ACCOMMODATION"
+        }
+      ]
+    },
+    "ROI_CALCULATION_FOCUS": {
+      "prompt": "That's exactly the right question to ask. Let me give you some concrete numbers: if you're currently spending 20 hours per week on manual lead qualification and our solution saves you 15 of those hours, that's $78,000 in annual salary savings alone - not counting the additional revenue from better conversion rates. Most clients see positive ROI within 60-90 days. The 15-minute demo includes a customized ROI calculator based on your specific numbers. Would that analysis be valuable?",
+      "prompt_summary": "$78K annual savings + ROI in 60-90 days",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "roi_demonstration",
+      "primary_objective": "quantify_financial_impact_and_advance_to_demo",
+      "paths": [
+        {
+          "intent": "ROI_COMPELLING_DEMO_REQUEST",
+          "target": "DEMO_SCHEDULING_ROI_FOCUSED"
+        },
+        {
+          "intent": "WANTS_SPECIFIC_PRICING_NOW",
+          "target": "PRICING_DEFERRAL_TO_CUSTOMIZATION"
+        },
+        {
+          "intent": "SKEPTICAL_OF_ROI_CLAIMS",
+          "target": "ROI_VALIDATION_WITH_REFERENCES"
+        }
+      ]
+    },
+    "SOCIAL_PROOF_AND_CASE_STUDIES": {
+      "prompt": "I appreciate healthy skepticism - it shows you make thoughtful decisions. Let me share a specific example: TechFlow Solutions, a B2B SaaS company similar to yours, was manually qualifying about 200 leads per month with a 12% conversion rate. After implementing our solution, they're now processing 350 leads monthly with a 18% conversion rate. That's 75% more qualified opportunities from the same marketing spend. I can show you the detailed case study and introduce you to their VP of Sales if that would be helpful.",
+      "prompt_summary": "TechFlow case: 200→350 leads, 12%→18% conversion",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "social_proof_delivery",
+      "primary_objective": "provide_credible_evidence_and_peer_validation",
+      "paths": [
+        {
+          "intent": "IMPRESSED_BY_RESULTS",
+          "target": "DEMO_SCHEDULING_CASE_STUDY_FOCUSED"
+        },
+        {
+          "intent": "WANTS_CUSTOMER_REFERENCE",
+          "target": "CUSTOMER_REFERENCE_ARRANGEMENT"
+        },
+        {
+          "intent": "ASKS_INDUSTRY_SPECIFIC_EXAMPLES",
+          "target": "INDUSTRY_SPECIFIC_CASE_STUDIES"
+        },
+        {
+          "intent": "REMAINS_SKEPTICAL",
+          "target": "RISK_REVERSAL_OFFER"
+        }
+      ]
+    },
+    "FINAL_VALUE_NUGGET_OFFER": {
+      "prompt": "I respect that this isn't the right timing. Before I go, let me leave you with one insight that might be valuable regardless: 73% of B2B leads never receive any follow-up after the initial inquiry. If you're not responding to leads within 5 minutes, you're statistically losing 80% of potential opportunities. That's probably worth a conversation with your team, even if we never speak again. Have a great day, {client_name}.",
+      "prompt_summary": "73% no follow-up, 5-min response = 80% more opps",
+      "type": "END",
+      "endpoint_name": "END_VALUE_DELIVERED_SOFT_CLOSE",
+      "success_metrics": {
+        "outcome": "value_delivered",
+        "quality_score": "medium",
+        "next_action": "future_nurture_sequence"
+      }
+    },
+    "CALLBACK_SCHEDULING": {
+      "prompt": "Absolutely, I appreciate you being upfront about timing. When would be a better time for a brief conversation? I can call you back at exactly the time that works best for you.",
+      "prompt_summary": "Schedule callback at your preferred time",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "callback_scheduling",
+      "primary_objective": "secure_future_engagement_commitment",
+      "paths": [
+        {
+          "intent": "PROVIDES_SPECIFIC_CALLBACK_TIME",
+          "target": "CALLBACK_CONFIRMATION"
+        },
+        {
+          "intent": "VAGUE_FUTURE_TIMING",
+          "target": "CALLBACK_CLARIFICATION_REQUEST"
+        },
+        {
+          "intent": "UNCERTAIN_ABOUT_CALLBACK",
+          "target": "ALTERNATIVE_COMMUNICATION_OFFER"
+        }
+      ]
+    },
+    "CASE_STUDY_DELIVERY_SETUP": {
+      "prompt": "Perfect. I'll send that case study video to your email within the next 10 minutes, along with a brief industry benchmark report. If the results resonate with your goals, I'll include my calendar link so you can schedule a brief follow-up at your convenience. If not, no worries at all. What's the best email address to send this to?",
+      "prompt_summary": "Email case study + benchmarks in 10 minutes",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "content_delivery_setup",
+      "primary_objective": "capture_contact_information_and_deliver_value",
+      "paths": [
+        {
+          "intent": "PROVIDES_EMAIL_ADDRESS",
+          "target": "EMAIL_DELIVERY_CONFIRMATION"
+        },
+        {
+          "intent": "HESITANT_TO_PROVIDE_EMAIL",
+          "target": "EMAIL_PRIVACY_ASSURANCE"
+        },
+        {
+          "intent": "PREFERS_DIFFERENT_DELIVERY_METHOD",
+          "target": "ALTERNATIVE_DELIVERY_ACCOMMODATION"
+        }
+      ]
+    },
+    "EMAIL_DELIVERY_CONFIRMATION": {
+      "prompt": "Excellent, I've made a note to send that to [email address] within the next 10 minutes. You should see an email from {sales_rep_name} at {company_name} with the subject line 'Lead Qualification Case Study - As Requested.' Thank you for your time today, {client_name}, and I hope you find the information valuable.",
+      "prompt_summary": "Email confirmation - case study in 10 minutes",
+      "type": "END",
+      "endpoint_name": "SUCCESS_CONTENT_DELIVERY_SCHEDULED",
+      "success_metrics": {
+        "outcome": "content_delivery_committed",
+        "quality_score": "medium-high",
+        "next_action": "email_follow_up_sequence"
+      }
+    },
+    "REFERRAL_APPRECIATION_AND_TRANSITION": {
+      "prompt": "That's incredibly helpful, thank you so much. I really appreciate you taking the time to point me in the right direction. I'll be sure to mention that you provided the referral when I reach out to [referral name]. This kind of professional courtesy really makes a difference.",
+      "prompt_summary": "Thank you for referral - will mention your help",
+      "type": "END",
+      "endpoint_name": "SUCCESS_REFERRAL_OBTAINED",
+      "success_metrics": {
+        "outcome": "referral_received",
+        "quality_score": "high",
+        "next_action": "referral_contact_preparation"
+      }
+    },
+    "RESPECTFUL_GATEKEEPER_ACKNOWLEDGMENT": {
+      "prompt": "I completely understand and respect your position. Thank you for your time, and I apologize for any inconvenience. Have a great day.",
+      "prompt_summary": "Respectful boundary acknowledgment",
+      "type": "END",
+      "endpoint_name": "END_GATEKEEPER_BOUNDARY_RESPECTED",
+      "success_metrics": {
+        "outcome": "professional_boundary_respected",
+        "quality_score": "neutral",
+        "next_action": "alternative_research_approach"
+      }
+    },
+    "PROFESSIONAL_DISQUALIFICATION": {
+      "prompt": "Thank you for being so transparent about your situation. Based on what you've shared, it sounds like our solution may not be the right fit for your current needs and priorities. I don't want to waste any more of your valuable time. I genuinely appreciate your honesty and wish you continued success with your current approach.",
+      "prompt_summary": "Professional disqualification - not the right fit",
+      "type": "END",
+      "endpoint_name": "END_PROFESSIONAL_DISQUALIFICATION",
+      "success_metrics": {
+        "outcome": "mutual_disqualification",
+        "quality_score": "high_professionalism",
+        "next_action": "disqualification_documentation"
+      }
+    },
+    "END_GRACEFUL_HOSTILE": {
+      "prompt": "I understand this call was unwelcome, and I sincerely apologize for the interruption. I'll ensure you're not contacted again. Have a good day.",
+      "prompt_summary": "Graceful exit from hostile situation",
+      "type": "END",
+      "endpoint_name": "END_HOSTILE_PROFESSIONAL_EXIT",
+      "success_metrics": {
+        "outcome": "hostile_situation_managed_professionally",
+        "quality_score": "professional_damage_control",
+        "next_action": "do_not_call_list_addition"
+      }
+    },
+    "END_RESPECTFUL_TIMING": {
+      "prompt": "I completely understand that the timing isn't right. I appreciate you being upfront about that. Thank you for your time, {client_name}, and I hope you have a great rest of your day.",
+      "prompt_summary": "Respectful timing acknowledgment",
+      "type": "END",
+      "endpoint_name": "END_TIMING_NOT_RIGHT",
+      "success_metrics": {
+        "outcome": "respectful_timing_acknowledgment",
+        "quality_score": "professional",
+        "next_action": "future_timing_consideration"
+      }
+    },
+    "END_DNC_COMPLIANCE": {
+      "prompt": "Absolutely, I'll remove your information from our database immediately. You will not receive any further communications from us. Thank you for letting me know, and have a great day.",
+      "prompt_summary": "Immediate data removal - no further contact",
+      "type": "END",
+      "endpoint_name": "END_DNC_REQUEST_HONORED",
+      "success_metrics": {
+        "outcome": "compliance_request_honored",
+        "quality_score": "compliance_excellence",
+        "next_action": "immediate_dnc_list_addition"
+      }
+    },
+    "END_AI_PREFERENCE": {
+      "prompt": "I completely understand your preference for human interaction. Thank you for your time, and I hope you have a great day.",
+      "prompt_summary": "Respect for human interaction preference",
+      "type": "END",
+      "endpoint_name": "END_AI_INTERACTION_DECLINED",
+      "success_metrics": {
+        "outcome": "ai_preference_respected",
+        "quality_score": "respectful",
+        "next_action": "human_interaction_preference_noted"
+      }
+    },
+    "END_TECHNICAL_DIFFICULTY": {
+      "prompt": "It seems we're having persistent technical difficulties. I'll try reaching you again at a better time. Thank you for your patience.",
+      "prompt_summary": "Technical difficulties - will try again later",
+      "type": "END",
+      "endpoint_name": "END_TECHNICAL_COMMUNICATION_FAILURE",
+      "success_metrics": {
+        "outcome": "technical_difficulty_acknowledged",
+        "quality_score": "neutral",
+        "next_action": "alternative_communication_attempt"
+      }
+    },
+    "SOCIAL_PROOF_REINFORCEMENT": {
+      "prompt": "I understand your skepticism - it's healthy in business. Let me share something concrete: [Similar company] reduced their lead qualification time by 40% in just 60 days. They were skeptical too until they saw the actual metrics. Would seeing their specific results change your perspective?",
+      "prompt_summary": "40% qualification time reduction in 60 days",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "skepticism_handling",
+      "primary_objective": "provide_concrete_evidence",
+      "paths": [
+        {
+          "intent": "IMPRESSED_BY_RESULTS",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "WANTS_CUSTOMER_REFERENCE",
+          "target": "CUSTOMER_REFERENCE_ARRANGEMENT"
+        },
+        {
+          "intent": "REMAINS_SKEPTICAL",
+          "target": "RISK_REVERSAL_OFFER"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "END_POLITE_DECLINE"
+        }
+      ]
+    },
+    "END_POLITE_DECLINE": {
+      "prompt": "I appreciate you taking the time to listen, {client_name}. If your priorities change in the future, we'll be here. Have a great day.",
+      "prompt_summary": "Polite decline - open for future",
+      "type": "END",
+      "endpoint_name": "END_POLITE_PROFESSIONAL_DECLINE",
+      "success_metrics": {
+        "outcome": "polite_decline_acknowledged",
+        "quality_score": "professional",
+        "next_action": "future_nurture_consideration"
+      }
+    },
+    "DETAILED_CAPABILITY_EXPLANATION": {
+      "prompt": "Great question! Our AI handles the entire initial qualification process - it engages leads within seconds 24/7, asks intelligent qualifying questions based on their responses, scores them based on your ideal customer profile, and seamlessly hands off hot leads to your sales team with full context. Think of it as having a tireless SDR that never misses a lead. Does this address what you were looking for?",
+      "prompt_summary": "Full AI qualification process - tireless SDR",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "capability_explanation",
+      "primary_objective": "provide_detailed_feature_overview",
+      "paths": [
+        {
+          "intent": "SATISFIED_CONTINUE",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        },
+        {
+          "intent": "TECHNICAL_INTEGRATION_QUESTION",
+          "target": "TECHNICAL_INTEGRATION_ASSURANCE"
+        },
+        {
+          "intent": "COST_CONCERN",
+          "target": "ROI_CALCULATION_FOCUS"
+        },
+        {
+          "intent": "STRONG_INTEREST",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        }
+      ]
+    },
+    "FINAL_VALUE_PROPOSITION": {
+      "prompt": "I hear you. Let me leave you with one thought: while your competitors are losing leads to slow response times, companies using our solution are capturing 25-40% more opportunities from the same marketing spend. Even if you're not ready now, wouldn't you want to know exactly how much revenue you're leaving on the table? Takes just 15 minutes to find out.",
+      "prompt_summary": "25-40% more opportunities vs competitors",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "final_value_pitch",
+      "primary_objective": "create_fomo_and_curiosity",
+      "paths": [
+        {
+          "intent": "CURIOUS_ABOUT_OPTIMIZATION",
+          "target": "DEMO_SCHEDULING_CONSULTATIVE"
+        },
+        {
+          "intent": "REQUEST_EMAIL_INFO",
+          "target": "CASE_STUDY_DELIVERY_SETUP"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "END_RESPECTFUL_DECLINE"
+        }
+      ]
+    },
+    "END_RESPECTFUL_DECLINE": {
+      "prompt": "I respect your decision, {client_name}. Thank you for your time today. If circumstances change, we're here to help. Have a great rest of your day.",
+      "prompt_summary": "Respectful decision acceptance",
+      "type": "END",
+      "endpoint_name": "END_RESPECTFUL_PROFESSIONAL_DECLINE",
+      "success_metrics": {
+        "outcome": "respectful_decline_handled",
+        "quality_score": "professional",
+        "next_action": "long_term_nurture_sequence"
+      }
+    },
+    "DETAILED_PRIVACY_EXPLANATION": {
+      "prompt": "Absolutely, I understand your concern about data privacy. We're fully GDPR and CCPA compliant. We only use publicly available business information from sources like LinkedIn, company websites, and industry directories. We never purchase lists or use personal data. Your information is encrypted and you can request deletion at any time. Does this address your privacy concerns?",
+      "prompt_summary": "GDPR/CCPA compliant - public data only",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "privacy_assurance",
+      "primary_objective": "build_trust_through_transparency",
+      "paths": [
+        {
+          "intent": "SATISFIED_CONTINUE",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        },
+        {
+          "intent": "REQUEST_REMOVAL",
+          "target": "END_DNC_COMPLIANCE"
+        },
+        {
+          "intent": "STILL_CONCERNED",
+          "target": "END_RESPECTFUL_DECLINE"
+        }
+      ]
+    },
+    "HUMAN_HANDOFF_OFFER": {
+      "prompt": "I completely understand your preference for human interaction. I can connect you with Sarah, one of our human sales consultants, right now. She's available and can continue this conversation. Would you like me to transfer you?",
+      "prompt_summary": "Transfer to human consultant Sarah",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "human_handoff",
+      "primary_objective": "accommodate_human_preference",
+      "paths": [
+        {
+          "intent": "AFFIRMATIVE_INTEREST",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "REQUEST_CALLBACK",
+          "target": "CALLBACK_SCHEDULING"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "END_AI_PREFERENCE"
+        }
+      ]
+    },
+    "ALTERNATIVE_COMMUNICATION_OFFER": {
+      "prompt": "I understand. Would you prefer if I sent you a brief email with the key information instead? Or we could schedule a callback when you have better reception?",
+      "prompt_summary": "Email or callback alternative options",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "communication_alternative",
+      "primary_objective": "find_alternative_engagement_method",
+      "paths": [
+        {
+          "intent": "REQUEST_EMAIL_INFO",
+          "target": "CASE_STUDY_DELIVERY_SETUP"
+        },
+        {
+          "intent": "REQUEST_CALLBACK",
+          "target": "CALLBACK_SCHEDULING"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "END_TECHNICAL_DIFFICULTY"
+        }
+      ]
+    },
+    "SOLUTION_EFFICIENCY_FOCUS": {
+      "prompt": "Resource constraints are exactly why our solution exists. Instead of hiring more SDRs at $50-70k each, our AI handles hundreds of conversations for a fraction of that cost. One client replaced 2 planned SDR hires with our solution and saved $120k annually while actually increasing qualified leads by 30%. Want to see how those economics work for your situation?",
+      "prompt_summary": "$120K savings vs 2 SDR hires + 30% more leads",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "efficiency_positioning",
+      "primary_objective": "demonstrate_resource_optimization",
+      "paths": [
+        {
+          "intent": "ROI_COMPELLING_DEMO_REQUEST",
+          "target": "DEMO_SCHEDULING_ROI_FOCUSED"
+        },
+        {
+          "intent": "WANTS_SPECIFIC_PRICING_NOW",
+          "target": "PRICING_DEFERRAL_TO_CUSTOMIZATION"
+        },
+        {
+          "intent": "SKEPTICAL_OF_ROI_CLAIMS",
+          "target": "ROI_VALIDATION_WITH_REFERENCES"
+        },
+        {
+          "intent": "STRONG_INTEREST",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        }
+      ]
+    },
+    "DETAILED_PROCESS_EXPLANATION": {
+      "prompt": "Of course! Here's exactly how it works: First, we integrate with your existing forms and chat widgets - takes about 30 minutes. Then our AI engages every lead instantly, asking smart qualifying questions based on your ideal customer profile. It scores and routes qualified leads to the right sales rep with full conversation context. Your team only talks to pre-qualified, interested prospects. The whole setup takes less than a day. Make sense?",
+      "prompt_summary": "30-minute integration, full setup in 1 day",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "process_explanation",
+      "primary_objective": "clarify_implementation_process",
+      "paths": [
+        {
+          "intent": "SATISFIED_CONTINUE",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        },
+        {
+          "intent": "TECHNICAL_IMPLEMENTATION_CONCERN",
+          "target": "IMPLEMENTATION_SIMPLICITY_ASSURANCE"
+        },
+        {
+          "intent": "STRONG_INTEREST",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        }
+      ]
+    },
+    "COLLABORATIVE_IMPROVEMENT_APPROACH": {
+      "prompt": "That's great that you're protective of what's working! We're not about replacing good processes - we enhance them. Think of our AI as amplifying your team's strengths. It handles the repetitive qualification work so your team can focus on high-value conversations. Even a 15% improvement in conversion could mean meaningful revenue. Worth exploring?",
+      "prompt_summary": "Enhance not replace - 15% improvement potential",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "collaborative_positioning",
+      "primary_objective": "position_as_enhancement_not_replacement",
+      "paths": [
+        {
+          "intent": "CURIOUS_ABOUT_OPTIMIZATION",
+          "target": "DEMO_SCHEDULING_OPTIMIZATION_FOCUSED"
+        },
+        {
+          "intent": "DEFENSIVE_OF_CURRENT_PROCESS",
+          "target": "END_RESPECTFUL_TIMING"
+        },
+        {
+          "intent": "CAUTIOUS_INTEREST",
+          "target": "DEMO_SCHEDULING_CONSULTATIVE"
+        }
+      ]
+    },
+    "COMPLEMENT_STRATEGY_EXPLANATION": {
+      "prompt": "Exactly - it's not about replacement, it's about multiplication. Our AI handles top-of-funnel qualification, then passes warm leads to your existing system with rich context. Your current tools become even more powerful when they're working with pre-qualified, engaged prospects. Most clients see their existing stack ROI improve by 20-35%. Should we explore how this would work with your specific setup?",
+      "prompt_summary": "Multiplication not replacement - 20-35% ROI boost",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "integration_positioning",
+      "primary_objective": "demonstrate_complementary_value",
+      "paths": [
+        {
+          "intent": "INTEGRATION_INTEREST",
+          "target": "INTEGRATION_DEMO_FOCUS"
+        },
+        {
+          "intent": "TECHNICAL_INTEGRATION_QUESTION",
+          "target": "TECHNICAL_INTEGRATION_ASSURANCE"
+        },
+        {
+          "intent": "STRONG_INTEREST",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        }
+      ]
+    },
+    "TECHNICAL_INTEGRATION_ASSURANCE": {
+      "prompt": "Great technical question! We integrate seamlessly with all major CRMs - Salesforce, HubSpot, Pipedrive, you name it. It's API-based, no code required, and takes about 30 minutes. We also have webhooks for custom systems. Our implementation team handles everything, and we don't go live until you're 100% comfortable. Want to see exactly how it connects with your specific stack?",
+      "prompt_summary": "All major CRMs - 30-minute API integration",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "technical_assurance",
+      "primary_objective": "address_integration_concerns",
+      "paths": [
+        {
+          "intent": "SATISFIED_CONTINUE",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "REQUESTS_MORE_CONTEXT",
+          "target": "INTEGRATION_DEMO_FOCUS"
+        },
+        {
+          "intent": "TECHNICAL_IMPLEMENTATION_CONCERN",
+          "target": "IMPLEMENTATION_SIMPLICITY_ASSURANCE"
+        }
+      ]
+    },
+    "INTEGRATION_DEMO_FOCUS": {
+      "prompt": "Perfect! During our 15-minute demo, we'll specifically show you how our AI integrates with your existing stack. You'll see the actual API connections, data flow, and how leads move from our system to yours with full context. We can even do a test integration during the call. When works best for you - Tuesday afternoon or Thursday morning?",
+      "prompt_summary": "15-min integration demo + live test - Tue/Thu",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "integration_focused_scheduling",
+      "primary_objective": "schedule_integration_focused_demo",
+      "paths": [
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "REQUESTS_ALTERNATIVE_TIME",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "SCHEDULING_HESITATION",
+          "target": "SCHEDULING_OBJECTION_HANDLING"
+        }
+      ]
+    },
+    "COST_DEFLECTION_TO_VALUE": {
+      "prompt": "I appreciate you asking about cost upfront - it shows you're serious about ROI. Pricing depends on your lead volume and specific needs, but here's what I can tell you: our clients typically see payback within 60-90 days. During the demo, we'll calculate your specific ROI based on your actual numbers. Most find the math compelling - shall we run those numbers together?",
+      "prompt_summary": "Payback in 60-90 days - demo ROI calculation",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "cost_value_reframe",
+      "primary_objective": "shift_focus_from_cost_to_roi",
+      "paths": [
+        {
+          "intent": "ROI_COMPELLING_DEMO_REQUEST",
+          "target": "DEMO_SCHEDULING_ROI_FOCUSED"
+        },
+        {
+          "intent": "WANTS_SPECIFIC_PRICING_NOW",
+          "target": "PRICING_DEFERRAL_TO_CUSTOMIZATION"
+        },
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        }
+      ]
+    },
+    "TECHNICAL_DEFERRAL_TO_SPECIALIST": {
+      "prompt": "Excellent technical question - I want to make sure you get the precise answer. Our solutions architect Jordan specializes in these details and can walk you through the technical architecture, security protocols, and integration specifics. Takes 15 minutes and you'll have all your technical questions answered. Can we set that up for Tuesday or Thursday?",
+      "prompt_summary": "Technical architect Jordan - 15-min deep dive",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "technical_specialist_handoff",
+      "primary_objective": "defer_to_technical_expertise",
+      "paths": [
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "REQUESTS_ALTERNATIVE_TIME",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "PREFERS_QUICK_SUMMARY_NOW",
+          "target": "RAPID_VALUE_DELIVERY"
+        }
+      ]
+    },
+    "SOCIAL_PROOF_TO_DEMO_BRIDGE": {
+      "prompt": "I'm glad you want to see proof - smart approach. During our 15-minute demo, I'll show you three case studies from companies exactly like yours, with real metrics and ROI data. You'll also see the platform in action with actual conversation examples. Plus, I can connect you with a current client for a reference call. Which day works better - Tuesday or Thursday?",
+      "prompt_summary": "3 case studies + live demo + client reference",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "proof_to_demo_transition",
+      "primary_objective": "leverage_proof_request_for_demo",
+      "paths": [
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "REQUESTS_ALTERNATIVE_TIME",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "WANTS_CUSTOMER_REFERENCE",
+          "target": "CUSTOMER_REFERENCE_ARRANGEMENT"
+        }
+      ]
+    },
+    "SCHEDULING_OBJECTION_HANDLING": {
+      "prompt": "I totally get it - your time is valuable. That's exactly why this 15-minute call is worth it. We'll skip the fluff and go straight to ROI calculation for your specific situation. If it's not valuable, we end the call early. But most clients tell us those 15 minutes identified opportunities worth hundreds of thousands. Can we at least explore what you might be missing?",
+      "prompt_summary": "15-min ROI focus - hundreds of thousands value",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "scheduling_resistance",
+      "primary_objective": "overcome_scheduling_hesitation",
+      "paths": [
+        {
+          "intent": "APPRECIATES_DIRECTNESS",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "STILL_HESITANT",
+          "target": "ALTERNATIVE_ENGAGEMENT_OFFER"
+        },
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "END_RESPECTFUL_TIMING"
+        }
+      ]
+    },
+    "TIME_EFFICIENCY_ASSURANCE": {
+      "prompt": "I promise we'll be incredibly efficient with your time. The entire consultation is 15 minutes - we'll spend 5 minutes understanding your current process, 5 minutes showing you relevant solutions, and 5 minutes calculating your specific ROI. If it's not valuable, we part ways professionally. Fair enough?",
+      "prompt_summary": "15-min structure: 5-min process + 5-min solution + 5-min ROI",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "time_value_proposition",
+      "primary_objective": "guarantee_time_efficiency",
+      "paths": [
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "APPRECIATES_DIRECTNESS",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "STILL_HESITANT",
+          "target": "CASE_STUDY_DELIVERY_SETUP"
+        }
+      ]
+    },
+    "ALTERNATIVE_ENGAGEMENT_OFFER": {
+      "prompt": "I understand you're not ready for a call right now. How about this - I'll send you a 2-minute video showing exactly how a similar company increased their qualified leads by 35%. If it resonates, we can talk. If not, no worries. Would that be helpful?",
+      "prompt_summary": "2-minute video - 35% lead increase example",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "alternative_engagement",
+      "primary_objective": "provide_low_commitment_option",
+      "paths": [
+        {
+          "intent": "ACCEPTS_VIDEO_CASE_STUDY",
+          "target": "CASE_STUDY_DELIVERY_SETUP"
+        },
+        {
+          "intent": "REQUEST_EMAIL_INFO",
+          "target": "EMAIL_DELIVERY_CONFIRMATION"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "FINAL_VALUE_NUGGET_OFFER"
+        }
+      ]
+    },
+    "SCHEDULING_CLARIFICATION_REQUEST": {
+      "prompt": "I want to make sure we find the perfect time for you. What does your calendar look like next week? I have slots available morning, afternoon, or even early evening if that works better for you.",
+      "prompt_summary": "Flexible scheduling - morning/afternoon/evening options",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "scheduling_clarification",
+      "primary_objective": "identify_specific_availability",
+      "paths": [
+        {
+          "intent": "PROVIDES_SPECIFIC_AVAILABILITY",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "VAGUE_AVAILABILITY",
+          "target": "FOLLOW_UP_SCHEDULING_OFFER"
+        },
+        {
+          "intent": "SCHEDULING_UNCERTAINTY",
+          "target": "CALLBACK_SCHEDULING"
+        }
+      ]
+    },
+    "FOLLOW_UP_SCHEDULING_OFFER": {
+      "prompt": "No problem at all. How about I send you a calendar link where you can pick any time that works for you over the next two weeks? You can schedule it whenever you're ready, even if it's weeks from now. Would that be easier?",
+      "prompt_summary": "Calendar link - schedule anytime next 2 weeks",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "flexible_scheduling_offer",
+      "primary_objective": "provide_scheduling_flexibility",
+      "paths": [
+        {
+          "intent": "AFFIRMATIVE_INTEREST",
+          "target": "CASE_STUDY_DELIVERY_SETUP"
+        },
+        {
+          "intent": "PROVIDES_EMAIL_ADDRESS",
+          "target": "EMAIL_DELIVERY_CONFIRMATION"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "END_RESPECTFUL_TIMING"
+        }
+      ]
+    },
+    "RAPID_VALUE_DELIVERY": {
+      "prompt": "Absolutely, let me give you the quick version: Companies using our AI respond to 100% of leads within 60 seconds, 24/7. Result: 25-40% more qualified opportunities, 20% reduction in cost per acquisition. Implementation takes one day, ROI typically within 60-90 days. The math is compelling - want to see how it applies to your numbers?",
+      "prompt_summary": "60-sec response = 25-40% more opps, ROI in 60-90 days",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "rapid_value_summary",
+      "primary_objective": "deliver_condensed_value_proposition",
+      "paths": [
+        {
+          "intent": "STRONG_INTEREST",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "COST_CONCERN",
+          "target": "ROI_CALCULATION_FOCUS"
+        },
+        {
+          "intent": "REQUEST_EMAIL_INFO",
+          "target": "CASE_STUDY_DELIVERY_SETUP"
+        },
+        {
+          "intent": "SATISFIED_CONTINUE",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        }
+      ]
+    },
+    "CALLBACK_CONFIRMATION": {
+      "prompt": "Perfect! I have you scheduled for a callback on [day/time]. I'll call you at exactly that time, and we'll keep it brief and valuable. I'm also sending you a confirmation email with my direct line in case anything changes. Looking forward to our conversation, {client_name}.",
+      "prompt_summary": "Callback scheduled + confirmation email sent",
+      "type": "END",
+      "endpoint_name": "SUCCESS_CALLBACK_SCHEDULED",
+      "success_metrics": {
+        "outcome": "callback_successfully_scheduled",
+        "quality_score": "high",
+        "next_action": "callback_preparation"
+      }
+    },
+    "CALLBACK_CLARIFICATION_REQUEST": {
+      "prompt": "I want to make sure I call you at the perfect time. Would early next week work better, or are you thinking more toward the end of the week? Morning or afternoon typically better for you?",
+      "prompt_summary": "Perfect callback timing - early/late week, AM/PM",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "callback_timing_clarification",
+      "primary_objective": "identify_callback_preference",
+      "paths": [
+        {
+          "intent": "PROVIDES_SPECIFIC_CALLBACK_TIME",
+          "target": "CALLBACK_CONFIRMATION"
+        },
+        {
+          "intent": "VAGUE_FUTURE_TIMING",
+          "target": "FOLLOW_UP_SCHEDULING_OFFER"
+        },
+        {
+          "intent": "UNCERTAIN_ABOUT_CALLBACK",
+          "target": "CASE_STUDY_DELIVERY_SETUP"
+        }
+      ]
+    },
+    "ALTERNATIVE_DELIVERY_ACCOMMODATION": {
+      "prompt": "Of course! I can share this information however works best for you. Would you prefer a text message with a link, a LinkedIn message, or should I have someone from our team call you when you have better reception?",
+      "prompt_summary": "Flexible delivery - text, LinkedIn, or team call",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "delivery_method_flexibility",
+      "primary_objective": "accommodate_delivery_preference",
+      "paths": [
+        {
+          "intent": "PROVIDES_CONTACT",
+          "target": "EMAIL_DELIVERY_CONFIRMATION"
+        },
+        {
+          "intent": "REQUEST_CALLBACK",
+          "target": "CALLBACK_SCHEDULING"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "END_RESPECTFUL_DECLINE"
+        }
+      ]
+    },
+    "EMAIL_PRIVACY_ASSURANCE": {
+      "prompt": "I completely understand your hesitation about sharing email. Here's my commitment: you'll receive exactly one email with the case study and ROI calculator. No spam, no email sequences, and you can unsubscribe instantly. We respect your inbox. Would that work for you?",
+      "prompt_summary": "One email only - case study + ROI calculator",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "email_trust_building",
+      "primary_objective": "overcome_email_hesitation",
+      "paths": [
+        {
+          "intent": "PROVIDES_EMAIL_ADDRESS",
+          "target": "EMAIL_DELIVERY_CONFIRMATION"
+        },
+        {
+          "intent": "STILL_HESITANT",
+          "target": "ALTERNATIVE_DELIVERY_ACCOMMODATION"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "FINAL_VALUE_NUGGET_OFFER"
+        }
+      ]
+    },
+    "CUSTOM_VALUE_PROPOSITION_BUILDING": {
+      "prompt": "That's a great perspective. You're right - most solutions are one-size-fits-all. But what if I told you our AI learns your specific qualification criteria and adapts to your unique sales process? It's like having a custom-trained SDR team that scales infinitely. Based on what you just shared, I think you'd find the customization capabilities particularly valuable. Worth a quick look?",
+      "prompt_summary": "Custom-trained AI SDR team - infinite scale",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "custom_value_creation",
+      "primary_objective": "build_personalized_value_prop",
+      "paths": [
+        {
+          "intent": "CAUTIOUS_INTEREST",
+          "target": "DEMO_SCHEDULING_CONSULTATIVE"
+        },
+        {
+          "intent": "REQUESTS_MORE_CONTEXT",
+          "target": "DETAILED_CAPABILITY_EXPLANATION"
+        },
+        {
+          "intent": "STRONG_INTEREST",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "REMAINS_CLOSED",
+          "target": "FINAL_VALUE_NUGGET_OFFER"
+        }
+      ]
+    },
+    "CRITERIA_MATCHING_RESPONSE": {
+      "prompt": "Perfect - those criteria you mentioned are exactly what we deliver on. Let me show you specifically how we address each point you raised... [addresses their specific criteria]. We built our solution for companies with exactly these requirements. Should we explore how this maps to your specific situation?",
+      "prompt_summary": "Perfect criteria match - built for your requirements",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "criteria_alignment",
+      "primary_objective": "demonstrate_perfect_fit",
+      "paths": [
+        {
+          "intent": "STRONG_INTEREST",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "CAUTIOUS_INTEREST",
+          "target": "DEMO_SCHEDULING_CONSULTATIVE"
+        },
+        {
+          "intent": "SKEPTICAL_OF_CLAIMS",
+          "target": "SOCIAL_PROOF_AND_CASE_STUDIES"
+        }
+      ]
+    },
+    "TRANSPARENT_CONVERSATION_RESET": {
+      "prompt": "You know what? Let me be completely transparent. Yes, this is a sales call, but I genuinely believe our solution could transform your lead qualification process. If I'm wrong, tell me to go away and I will. But if I'm right, you could be converting 25-40% more leads within 90 days. Can I have 2 minutes to prove it?",
+      "prompt_summary": "Radical transparency - 25-40% more leads in 90 days",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "transparency_reset",
+      "primary_objective": "reset_with_radical_honesty",
+      "paths": [
+        {
+          "intent": "APPRECIATES_DIRECTNESS",
+          "target": "RAPID_VALUE_DELIVERY"
+        },
+        {
+          "intent": "PERMISSION_GRANTED",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "FINAL_VALUE_NUGGET_OFFER"
+        }
+      ]
+    },
+    "DEPARTMENT_CONTACT_REQUEST": {
+      "prompt": "Thank you for that information. Could you share the best contact in [department name], or would you prefer to introduce us via email? I want to make sure I'm respecting your internal processes.",
+      "prompt_summary": "Department contact request - respect internal process",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "department_navigation",
+      "primary_objective": "obtain_department_contact",
+      "paths": [
+        {
+          "intent": "PROVIDES_REFERRAL_CONTACT",
+          "target": "REFERRAL_APPRECIATION_AND_TRANSITION"
+        },
+        {
+          "intent": "OFFERS_TO_TAKE_MESSAGE",
+          "target": "MESSAGE_TAKING_ACCOMMODATION"
+        },
+        {
+          "intent": "REFUSES_TO_PROVIDE_INFORMATION",
+          "target": "RESPECTFUL_GATEKEEPER_ACKNOWLEDGMENT"
+        }
+      ]
+    },
+    "MESSAGE_TAKING_ACCOMMODATION": {
+      "prompt": "That would be very helpful, thank you. Could you let them know that {sales_rep_name} from {company_name} called about helping optimize your lead qualification process? We help companies increase qualified opportunities by 25-40%. If they're interested, they can reach me directly at [contact]. I really appreciate your help.",
+      "prompt_summary": "Message: lead optimization - 25-40% more opportunities",
+      "type": "END",
+      "endpoint_name": "MESSAGE_LEFT_WITH_GATEKEEPER",
+      "success_metrics": {
+        "outcome": "message_successfully_left",
+        "quality_score": "medium",
+        "next_action": "follow_up_attempt_scheduled"
+      }
+    },
+    "DEMO_SCHEDULING_ROI_FOCUSED": {
+      "prompt": "Excellent! During our 15-minute session, we'll calculate your exact ROI using our proprietary calculator with your actual numbers - lead volume, conversion rates, and team costs. Most clients are surprised by how much revenue they're leaving on the table. Tuesday afternoon or Thursday morning - which works better for your ROI deep-dive?",
+      "prompt_summary": "15-min ROI calculator with your actual numbers",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "roi_focused_scheduling",
+      "primary_objective": "schedule_roi_focused_demo",
+      "paths": [
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "REQUESTS_ALTERNATIVE_TIME",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "WANTS_SPECIFIC_PRICING_NOW",
+          "target": "PRICING_DEFERRAL_TO_CUSTOMIZATION"
+        },
+        {
+          "intent": "SCHEDULING_HESITATION",
+          "target": "TIME_EFFICIENCY_ASSURANCE"
+        }
+      ]
+    },
+    "PRICING_DEFERRAL_TO_CUSTOMIZATION": {
+      "prompt": "I appreciate you wanting specific numbers. Our pricing ranges from $2,000 to $10,000 per month depending on lead volume and features. But here's what matters more: clients typically see 2-4x ROI within 90 days. During our quick call, I'll give you exact pricing for your situation and show you the ROI math. Fair enough?",
+      "prompt_summary": "$2K-$10K/month pricing, 2-4x ROI in 90 days",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "pricing_discussion",
+      "primary_objective": "provide_range_while_maintaining_demo_focus",
+      "paths": [
+        {
+          "intent": "SATISFIED_CONTINUE",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "COST_CONCERN",
+          "target": "ROI_CALCULATION_FOCUS"
+        },
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "END_RESPECTFUL_DECLINE"
+        }
+      ]
+    },
+    "ROI_VALIDATION_WITH_REFERENCES": {
+      "prompt": "Smart to verify our ROI claims. I'll do you one better - I can connect you with three current clients who are seeing these exact results. They'll share their actual numbers, not marketing fluff. Plus, during our demo, you'll see their dashboards and real metrics. Want to see the proof?",
+      "prompt_summary": "3 client references + real dashboard metrics",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "roi_proof_offering",
+      "primary_objective": "validate_roi_claims_with_evidence",
+      "paths": [
+        {
+          "intent": "WANTS_CUSTOMER_REFERENCE",
+          "target": "CUSTOMER_REFERENCE_ARRANGEMENT"
+        },
+        {
+          "intent": "IMPRESSED_BY_RESULTS",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        }
+      ]
+    },
+    "CUSTOMER_REFERENCE_ARRANGEMENT": {
+      "prompt": "Absolutely! I'll arrange for you to speak with David from TechCorp - they're in your industry and saw 280% ROI in 90 days. I'll also include Sarah from Growth Solutions. I'll send you their contact details and a brief case study for context. They're happy to share their experience. When would you like me to set up those reference calls?",
+      "prompt_summary": "David (TechCorp) 280% ROI + Sarah references",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "reference_coordination",
+      "primary_objective": "facilitate_customer_references",
+      "paths": [
+        {
+          "intent": "PROVIDES_SPECIFIC_AVAILABILITY",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "REQUEST_EMAIL_INFO",
+          "target": "CASE_STUDY_DELIVERY_SETUP"
+        },
+        {
+          "intent": "IMPRESSED_BY_RESULTS",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        }
+      ]
+    },
+    "INDUSTRY_SPECIFIC_CASE_STUDIES": {
+      "prompt": "Great question about your specific industry. We have three clients in your exact space. Let me share the most relevant: [Similar company] was struggling with the same challenges you mentioned. After implementing our solution, they increased qualified opportunities by 280% while reducing cost per lead by 45%. I have their full case study with metrics. Want to see it?",
+      "prompt_summary": "Industry match: 280% more opps, 45% cost reduction",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "industry_proof",
+      "primary_objective": "provide_industry_specific_validation",
+      "paths": [
+        {
+          "intent": "STRONG_INTEREST",
+          "target": "DEMO_SCHEDULING_CASE_STUDY_FOCUSED"
+        },
+        {
+          "intent": "REQUEST_EMAIL_INFO",
+          "target": "CASE_STUDY_DELIVERY_SETUP"
+        },
+        {
+          "intent": "WANTS_CUSTOMER_REFERENCE",
+          "target": "CUSTOMER_REFERENCE_ARRANGEMENT"
+        }
+      ]
+    },
+    "RISK_REVERSAL_OFFER": {
+      "prompt": "I understand you're still skeptical, and that's fair. How about this: we offer a 30-day pilot program. You pay nothing upfront, we implement our solution, and you only pay if we deliver the promised results. If we don't increase your qualified leads by at least 50%, you pay zero. No risk, all upside. Interested?",
+      "prompt_summary": "30-day pilot - pay only if 50%+ lead increase",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "risk_reversal",
+      "primary_objective": "eliminate_risk_barrier",
+      "paths": [
+        {
+          "intent": "STRONG_INTEREST",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "CAUTIOUS_INTEREST",
+          "target": "DEMO_SCHEDULING_CONSULTATIVE"
+        },
+        {
+          "intent": "REQUESTS_MORE_CONTEXT",
+          "target": "DETAILED_CAPABILITY_EXPLANATION"
+        },
+        {
+          "intent": "NEGATIVE_REJECTION",
+          "target": "END_RESPECTFUL_DECLINE"
+        }
+      ]
+    },
+    "DEMO_SCHEDULING_CASE_STUDY_FOCUSED": {
+      "prompt": "Perfect! During our 15-minute demo, I'll walk you through that exact case study, show you their actual dashboard and results, and demonstrate how we'd implement the same strategies for you. We'll also calculate your potential ROI based on their success metrics. Tuesday afternoon or Thursday morning?",
+      "prompt_summary": "15-min case study walkthrough + ROI calc",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "case_study_demo_scheduling",
+      "primary_objective": "schedule_evidence_based_demo",
+      "paths": [
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "REQUESTS_ALTERNATIVE_TIME",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "SCHEDULING_HESITATION",
+          "target": "TIME_EFFICIENCY_ASSURANCE"
+        }
+      ]
+    },
+    "DEMO_SCHEDULING_GROWTH_FOCUSED": {
+      "prompt": "Excellent! Growth-minded companies love our solution. In 15 minutes, I'll show you how to scale from hundreds to thousands of leads without adding headcount. You'll see our growth playbook that's helped clients scale 2-3x while maintaining quality. Perfect timing with your growth plans. Tuesday or Thursday?",
+      "prompt_summary": "Growth playbook - scale 2-3x without headcount",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "growth_focused_scheduling",
+      "primary_objective": "schedule_growth_focused_demo",
+      "paths": [
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "REQUESTS_ALTERNATIVE_TIME",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "COST_CONCERN",
+          "target": "COST_SCALING_EXPLANATION"
+        }
+      ]
+    },
+    "DEMO_SCHEDULING_OPTIMIZATION_FOCUSED": {
+      "prompt": "Smart thinking! Our 15-minute optimization session will show you exactly where you're leaving money on the table. We'll audit your current process, identify quick wins, and show you how even small improvements compound into major revenue gains. Tuesday or Thursday for your optimization audit?",
+      "prompt_summary": "15-min optimization audit - find money left on table",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "optimization_focused_scheduling",
+      "primary_objective": "schedule_optimization_focused_demo",
+      "paths": [
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "REQUESTS_ALTERNATIVE_TIME",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "CAUTIOUS_INTEREST",
+          "target": "DEMO_SCHEDULING_CONSULTATIVE"
+        }
+      ]
+    },
+    "DEMO_SCHEDULING_URGENCY_FOCUSED": {
+      "prompt": "You're right about speed being critical! In our 15-minute demo, I'll show you how to start capturing those lost leads immediately. We can have you up and running within 48 hours. Every day you wait, you're losing opportunities to competitors. Should we do this Tuesday or even tomorrow if you're available?",
+      "prompt_summary": "48-hour setup - stop losing to competitors",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "urgency_focused_scheduling",
+      "primary_objective": "schedule_urgent_demo",
+      "paths": [
+        {
+          "intent": "ACCEPTS_PROPOSED_TIME",
+          "target": "MEETING_CONFIRMATION_SUCCESS"
+        },
+        {
+          "intent": "REQUESTS_ALTERNATIVE_TIME",
+          "target": "FLEXIBLE_SCHEDULING_ACCOMMODATION"
+        },
+        {
+          "intent": "TECHNICAL_IMPLEMENTATION_CONCERN",
+          "target": "IMPLEMENTATION_SIMPLICITY_ASSURANCE"
+        },
+        {
+          "intent": "COST_CONCERN",
+          "target": "ROI_CALCULATION_FOCUS"
+        },
+        {
+          "intent": "WANTS_SPECIFIC_PRICING_NOW",
+          "target": "PRICING_DEFERRAL_TO_CUSTOMIZATION"
+        },
+        {
+          "intent": "COST_QUESTION_BEFORE_DEMO",
+          "target": "PRICING_DEFERRAL_TO_CUSTOMIZATION"
+        }
+      ]
+    },
+    "COST_SCALING_EXPLANATION": {
+      "prompt": "Great question about scaling costs. Here's the beauty: unlike hiring SDRs where costs scale linearly, our pricing has volume discounts. The more leads you process, the lower your cost per lead becomes. At high volumes, you're paying pennies per conversation. During the demo, I'll show you the exact pricing tiers. Makes sense?",
+      "prompt_summary": "Volume discounts - pennies per conversation at scale",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "cost_scaling_discussion",
+      "primary_objective": "explain_economies_of_scale",
+      "paths": [
+        {
+          "intent": "SATISFIED_CONTINUE",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "WANTS_SPECIFIC_PRICING_NOW",
+          "target": "PRICING_DEFERRAL_TO_CUSTOMIZATION"
+        },
+        {
+          "intent": "ROI_COMPELLING_DEMO_REQUEST",
+          "target": "DEMO_SCHEDULING_ROI_FOCUSED"
+        }
+      ]
+    },
+    "IMPLEMENTATION_SIMPLICITY_ASSURANCE": {
+      "prompt": "I completely understand the implementation concern. Here's the reality: setup takes 2-4 hours total. Day 1: 30-minute API connection. Day 2: Configure your qualification criteria. Day 3: Test and go live. We handle everything, and you're never locked in - you can pause or adjust anytime. Much simpler than you'd expect. Want to see the implementation timeline?",
+      "prompt_summary": "2-4 hour setup over 3 days - never locked in",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "implementation_simplification",
+      "primary_objective": "address_implementation_fears",
+      "paths": [
+        {
+          "intent": "SATISFIED_CONTINUE",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "TECHNICAL_INTEGRATION_QUESTION",
+          "target": "TECHNICAL_INTEGRATION_ASSURANCE"
+        },
+        {
+          "intent": "STRONG_INTEREST",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        }
+      ]
+    },
+    "TIME_INVESTMENT_REFRAME": {
+      "prompt": "I hear you on time being precious. Consider this: you're probably spending 20+ hours per week on lead qualification right now. A 15-minute call could show you how to get those 20 hours back every week. That's 1,000 hours per year. Isn't 15 minutes worth exploring that kind of time savings?",
+      "prompt_summary": "15 minutes to save 1,000 hours per year",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "time_value_reframe",
+      "primary_objective": "reframe_time_investment_value",
+      "paths": [
+        {
+          "intent": "APPRECIATES_DIRECTNESS",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "CAUTIOUS_INTEREST",
+          "target": "DEMO_SCHEDULING_CONSULTATIVE"
+        },
+        {
+          "intent": "STILL_HESITANT",
+          "target": "ALTERNATIVE_ENGAGEMENT_OFFER"
+        },
+        {
+          "intent": "TIME_CONSTRAINT_OBJECTION",
+          "target": "TIME_CONSTRAINT_ACKNOWLEDGE"
+        }
+      ]
+    },
+    "ALTERNATIVE_DISCOVERY_APPROACH": {
+      "prompt": "I understand you prefer not to share specifics right now. Let me flip this around - what would need to be true about a lead qualification solution for it to be worth 15 minutes of your time? What's the biggest frustration with your current process?",
+      "prompt_summary": "Flip approach - what would be worth 15 minutes?",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "alternative_discovery",
+      "primary_objective": "gather_information_differently",
+      "paths": [
+        {
+          "intent": "PROVIDES_SPECIFIC_CRITERIA",
+          "target": "CRITERIA_MATCHING_RESPONSE"
+        },
+        {
+          "intent": "PROVIDES_INFO",
+          "target": "DISCOVERY_INITIAL_QUALIFICATION"
+        },
+        {
+          "intent": "REMAINS_CLOSED",
+          "target": "FINAL_VALUE_PROPOSITION"
+        }
+      ]
+    },
+    "DIFFERENTIATION_EXPLANATION": {
+      "prompt": "Great question about what makes us different. Three key things: First, our AI learns from every conversation, getting smarter daily. Second, we integrate with your exact sales methodology, not forcing you into ours. Third, we're the only solution with true 24/7 multilingual support. Your competitors using generic tools can't match this level of personalization. Want to see the competitive advantage in action?",
+      "prompt_summary": "3 differentiators: learning AI + methodology fit + 24/7 multilingual",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "competitive_differentiation",
+      "primary_objective": "highlight_unique_advantages",
+      "paths": [
+        {
+          "intent": "COMPETITIVE_ADVANTAGE_INTEREST",
+          "target": "DEMO_SCHEDULING_DIRECT"
+        },
+        {
+          "intent": "REQUESTS_MORE_CONTEXT",
+          "target": "DETAILED_CAPABILITY_EXPLANATION"
+        },
+        {
+          "intent": "SKEPTICAL_OF_CLAIMS",
+          "target": "SOCIAL_PROOF_AND_CASE_STUDIES"
+        }
+      ]
+    },
+    "BUDGET_AUTHORITY_QUALIFICATION": {
+      "prompt": "Great question about budget and decision-making. To make sure this conversation is valuable for both of us, may I ask: are you the person who would evaluate and approve a solution like this, or would you be involving others in that decision? I want to make sure we're aligned on next steps.",
+      "prompt_summary": "Budget authority and decision-maker qualification",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "qualification",
+      "primary_objective": "identify_decision_making_authority_and_budget_process",
+      "qualifying_questions": [
+        "Decision-making authority level",
+        "Budget approval process",
+        "Typical budget range for sales tools",
+        "Other stakeholders involved"
+      ],
+      "paths": [
+        {
+          "intent": "CONFIRMS_DECISION_AUTHORITY",
+          "confidence_threshold": 0.8,
+          "target": "BUDGET_RANGE_EXPLORATION",
+          "transition_strategy": "direct_budget_qualification"
+        },
+        {
+          "intent": "INVOLVES_OTHERS_DECISION",
+          "confidence_threshold": 0.7,
+          "target": "STAKEHOLDER_MAPPING",
+          "transition_strategy": "multi_stakeholder_approach"
+        },
+        {
+          "intent": "DEFLECTS_AUTHORITY_QUESTION",
+          "confidence_threshold": 0.6,
+          "target": "COLLABORATIVE_DECISION_APPROACH",
+          "transition_strategy": "gentle_authority_exploration"
+        },
+        {
+          "intent": "BUDGET_CONCERN_IMMEDIATE",
+          "confidence_threshold": 0.8,
+          "target": "ROI_JUSTIFICATION_FOCUS",
+          "transition_strategy": "value_over_cost_positioning"
+        }
+      ]
+    },
+    "TIMELINE_QUALIFICATION": {
+      "prompt": "Good question about timing. Most companies see the biggest impact when they implement during their peak lead generation periods. What's driving your timeline for evaluating a solution like this? Are you looking to have something in place by a specific date or quarter?",
+      "prompt_summary": "Decision timeline and urgency qualification",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "qualification",
+      "primary_objective": "understand_decision_timeline_and_urgency_drivers",
+      "paths": [
+        {
+          "intent": "URGENT_TIMELINE_NEED",
+          "confidence_threshold": 0.8,
+          "target": "RAPID_IMPLEMENTATION_FOCUS",
+          "transition_strategy": "urgency_matched_approach"
+        },
+        {
+          "intent": "FLEXIBLE_TIMELINE",
+          "confidence_threshold": 0.7,
+          "target": "EDUCATIONAL_NURTURE_APPROACH",
+          "transition_strategy": "value_building_sequence"
+        },
+        {
+          "intent": "BUDGET_CYCLE_DEPENDENT",
+          "confidence_threshold": 0.75,
+          "target": "BUDGET_CYCLE_ALIGNMENT",
+          "transition_strategy": "planning_cycle_coordination"
+        },
+        {
+          "intent": "COMPETITIVE_PRESSURE_DRIVEN",
+          "confidence_threshold": 0.8,
+          "target": "COMPETITIVE_URGENCY_POSITIONING",
+          "transition_strategy": "competitive_advantage_focus"
+        }
+      ]
+    },
+    "SCALING_CHALLENGES_DISCOVERY": {
+      "prompt": "Scaling challenges are exactly what we specialize in solving. Many companies hit a wall when their lead volume grows but their team can't keep up with quality qualification. What specific scaling challenges are you anticipating or already experiencing with your current approach?",
+      "prompt_summary": "Team scaling and growth challenge exploration",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "discovery",
+      "primary_objective": "identify_specific_scaling_pain_points",
+      "paths": [
+        {
+          "intent": "HIRING_CHALLENGES",
+          "confidence_threshold": 0.8,
+          "target": "HIRING_ALTERNATIVE_SOLUTION",
+          "transition_strategy": "resource_efficiency_focus"
+        },
+        {
+          "intent": "QUALITY_CONSISTENCY_CONCERN",
+          "confidence_threshold": 0.75,
+          "target": "QUALITY_ASSURANCE_POSITIONING",
+          "transition_strategy": "consistency_guarantee_approach"
+        },
+        {
+          "intent": "COST_SCALING_CONCERN",
+          "confidence_threshold": 0.8,
+          "target": "COST_EFFICIENCY_DEMONSTRATION",
+          "transition_strategy": "economic_scaling_focus"
+        },
+        {
+          "intent": "MANAGEMENT_COMPLEXITY",
+          "confidence_threshold": 0.7,
+          "target": "AUTOMATION_SIMPLIFICATION_FOCUS",
+          "transition_strategy": "operational_simplification"
+        }
+      ]
+    },
+    "SECURITY_COMPLIANCE_ASSURANCE": {
+      "prompt": "Excellent question about security and compliance - that's exactly what enterprise clients should ask. We're SOC 2 Type II certified, GDPR and CCPA compliant, with end-to-end encryption and role-based access controls. We also maintain compliance with HIPAA for healthcare clients. Our security documentation is available for review. Does this address your security requirements?",
+      "prompt_summary": "SOC 2, GDPR, CCPA, HIPAA compliance assurance",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "security_compliance",
+      "primary_objective": "address_security_and_compliance_concerns",
+      "paths": [
+        {
+          "intent": "SATISFIED_SECURITY_STANDARDS",
+          "confidence_threshold": 0.8,
+          "target": "DISCOVERY_INITIAL_QUALIFICATION",
+          "transition_strategy": "security_confidence_to_discovery"
+        },
+        {
+          "intent": "REQUESTS_SECURITY_DOCUMENTATION",
+          "confidence_threshold": 0.8,
+          "target": "SECURITY_DOCUMENTATION_DELIVERY",
+          "transition_strategy": "documentation_provision_approach"
+        },
+        {
+          "intent": "SPECIFIC_COMPLIANCE_REQUIREMENTS",
+          "confidence_threshold": 0.85,
+          "target": "CUSTOM_COMPLIANCE_DISCUSSION",
+          "transition_strategy": "tailored_compliance_response"
+        },
+        {
+          "intent": "SECURITY_TEAM_INVOLVEMENT_NEEDED",
+          "confidence_threshold": 0.8,
+          "target": "SECURITY_STAKEHOLDER_INCLUSION",
+          "transition_strategy": "security_team_engagement"
+        }
+      ]
+    },
+    "BUDGET_RANGE_EXPLORATION": {
+      "prompt": "Perfect, I appreciate your directness. To ensure we're discussing the right solution tier, what budget range are you typically comfortable with for sales and marketing tools that deliver significant ROI? I want to make sure we focus on options that make sense for your business.",
+      "prompt_summary": "Budget range qualification for solution sizing",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "budget_qualification",
+      "primary_objective": "identify_budget_parameters_and_solution_fit",
+      "paths": [
+        {
+          "intent": "PROVIDES_BUDGET_RANGE",
+          "confidence_threshold": 0.8,
+          "target": "SOLUTION_TIER_MATCHING",
+          "transition_strategy": "budget_aligned_positioning"
+        },
+        {
+          "intent": "BUDGET_FLEXIBILITY_INDICATED",
+          "confidence_threshold": 0.7,
+          "target": "ROI_JUSTIFICATION_FOCUS",
+          "transition_strategy": "value_based_budget_expansion"
+        },
+        {
+          "intent": "BUDGET_CONSTRAINT_CONCERN",
+          "confidence_threshold": 0.8,
+          "target": "COST_EFFICIENCY_DEMONSTRATION",
+          "transition_strategy": "efficiency_over_cost_focus"
+        }
+      ]
+    },
+    "STAKEHOLDER_MAPPING": {
+      "prompt": "That's smart to involve the right people in the decision. Who else would typically be part of evaluating a solution like this? I want to make sure we address everyone's concerns and priorities from the start.",
+      "prompt_summary": "Stakeholder identification and multi-person buying process",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "stakeholder_mapping",
+      "primary_objective": "identify_all_decision_influencers_and_their_priorities",
+      "paths": [
+        {
+          "intent": "IDENTIFIES_KEY_STAKEHOLDERS",
+          "confidence_threshold": 0.8,
+          "target": "MULTI_STAKEHOLDER_DEMO_APPROACH",
+          "transition_strategy": "inclusive_stakeholder_strategy"
+        },
+        {
+          "intent": "TECHNICAL_STAKEHOLDER_MENTIONED",
+          "confidence_threshold": 0.8,
+          "target": "TECHNICAL_STAKEHOLDER_INCLUSION",
+          "transition_strategy": "technical_validation_focus"
+        },
+        {
+          "intent": "FINANCIAL_APPROVAL_REQUIRED",
+          "confidence_threshold": 0.8,
+          "target": "CFO_FOCUSED_ROI_PREPARATION",
+          "transition_strategy": "financial_justification_emphasis"
+        }
+      ]
+    },
+    "RAPID_IMPLEMENTATION_FOCUS": {
+      "prompt": "I understand the urgency - timing is everything in lead qualification. The good news is we can have you up and running in 48-72 hours. Our rapid deployment team has done this hundreds of times. What's driving the urgent timeline? Is it a specific campaign launch or competitive pressure?",
+      "prompt_summary": "48-72 hour rapid deployment for urgent needs",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "urgency_response",
+      "primary_objective": "match_urgency_with_rapid_solution_delivery",
+      "paths": [
+        {
+          "intent": "CAMPAIGN_LAUNCH_DRIVEN",
+          "confidence_threshold": 0.8,
+          "target": "CAMPAIGN_ALIGNED_IMPLEMENTATION",
+          "transition_strategy": "campaign_success_focus"
+        },
+        {
+          "intent": "COMPETITIVE_PRESSURE",
+          "confidence_threshold": 0.8,
+          "target": "COMPETITIVE_ADVANTAGE_URGENCY",
+          "transition_strategy": "competitive_differentiation_speed"
+        },
+        {
+          "intent": "GROWTH_OPPORTUNITY_TIME_SENSITIVE",
+          "confidence_threshold": 0.7,
+          "target": "GROWTH_CAPTURE_POSITIONING",
+          "transition_strategy": "opportunity_maximization_focus"
+        }
+      ]
+    },
+    "HIRING_ALTERNATIVE_SOLUTION": {
+      "prompt": "Hiring challenges are exactly why companies love our solution. Instead of the 3-6 month process to hire and train SDRs, plus the ongoing management overhead, you get immediate capacity that scales instantly. One client was about to hire 3 SDRs but chose our solution instead - saved $180K annually and got better results. Want to see how the economics compare?",
+      "prompt_summary": "Hiring alternative - $180K savings vs 3 SDRs",
+      "type": "INTENT_CLASSIFICATION",
+      "conversation_stage": "hiring_alternative_positioning",
+      "primary_objective": "position_as_superior_alternative_to_hiring",
+      "paths": [
+        {
+          "intent": "HIRING_COST_CONCERN",
+          "confidence_threshold": 0.8,
+          "target": "HIRING_COST_COMPARISON",
+          "transition_strategy": "total_cost_of_ownership_focus"
+        },
+        {
+          "intent": "MANAGEMENT_OVERHEAD_CONCERN",
+          "confidence_threshold": 0.75,
+          "target": "MANAGEMENT_SIMPLIFICATION_FOCUS",
+          "transition_strategy": "operational_simplicity_emphasis"
+        },
+        {
+          "intent": "SCALING_SPEED_INTEREST",
+          "confidence_threshold": 0.8,
+          "target": "INSTANT_SCALING_DEMONSTRATION",
+          "transition_strategy": "speed_and_flexibility_focus"
+        }
+      ]
+    }
+  },
+  "analytics_tracking": {
+    "conversation_metrics": [
+      "total_conversation_length",
+      "objection_count",
+      "positive_sentiment_indicators",
+      "decision_maker_confirmation",
+      "pain_point_identification_success",
+      "budget_authority_qualification_success",
+      "timeline_urgency_assessment",
+      "industry_relevance_score",
+      "sentiment_shift_tracking"
+    ],
+    "success_indicators": [
+      "meeting_scheduled",
+      "referral_obtained",
+      "content_delivery_requested",
+      "callback_scheduled",
+      "positive_engagement_maintained",
+      "stakeholder_mapping_completed",
+      "budget_range_identified",
+      "decision_timeline_established"
+    ],
+    "optimization_points": [
+      "objection_handling_effectiveness",
+      "value_proposition_resonance",
+      "timing_sensitivity_management",
+      "competitive_positioning_success",
+      "qualification_depth_achievement",
+      "industry_personalization_impact",
+      "sentiment_recovery_success"
+    ]
+  },
+  "sentiment_analysis_triggers": {
+    "positive_sentiment_indicators": [
+      "That sounds interesting",
+      "Tell me more",
+      "I like that approach",
+      "That makes sense",
+      "Impressive results"
+    ],
+    "negative_sentiment_indicators": [
+      "I'm not interested",
+      "Too expensive",
+      "Waste of time",
+      "Not for us",
+      "Already have something"
+    ],
+    "neutral_to_positive_triggers": [
+      "Maybe",
+      "I'll think about it",
+      "Possibly",
+      "Could be useful",
+      "Might work"
+    ],
+    "tone_adjustment_rules": {
+      "positive_sentiment": "maintain_enthusiasm_increase_value_focus",
+      "negative_sentiment": "empathy_first_then_reframe",
+      "neutral_sentiment": "curiosity_building_approach",
+      "skeptical_sentiment": "evidence_and_social_proof_heavy"
+    }
+  },
+  "industry_specific_branches": {
+    "SaaS": {
+      "pain_points": [
+        "churn_prevention",
+        "user_onboarding",
+        "feature_adoption",
+        "expansion_revenue"
+      ],
+      "value_metrics": ["MRR_impact", "CAC_reduction", "LTV_improvement"],
+      "case_studies": [
+        "TechFlow_Solutions",
+        "CloudScale_Inc",
+        "DataDrive_Platform"
+      ]
+    },
+    "Professional_Services": {
+      "pain_points": [
+        "project_pipeline",
+        "resource_utilization",
+        "client_acquisition_cost"
+      ],
+      "value_metrics": [
+        "billable_hour_optimization",
+        "project_margin_improvement"
+      ],
+      "case_studies": ["ConsultCorp_Partners", "LegalEdge_Associates"]
+    },
+    "Manufacturing": {
+      "pain_points": [
+        "supply_chain_optimization",
+        "production_efficiency",
+        "quality_control"
+      ],
+      "value_metrics": [
+        "operational_cost_reduction",
+        "defect_rate_improvement"
+      ],
+      "case_studies": ["PrecisionTech_Manufacturing", "IndustrialFlow_Systems"]
+    },
+    "Healthcare": {
+      "pain_points": [
+        "patient_acquisition",
+        "compliance_requirements",
+        "operational_efficiency"
+      ],
+      "value_metrics": [
+        "patient_satisfaction_scores",
+        "operational_cost_per_patient"
+      ],
+      "case_studies": ["HealthTech_Solutions", "MedicalGroup_Partners"]
+    },
+    "Financial_Services": {
+      "pain_points": [
+        "regulatory_compliance",
+        "customer_acquisition",
+        "risk_management"
+      ],
+      "value_metrics": ["compliance_cost_reduction", "customer_lifetime_value"],
+      "case_studies": ["FinanceFirst_Group", "InvestmentEdge_Partners"]
+    }
+  },
+  "follow_up_sequences": {
+    "post_meeting_booked": {
+      "immediate_actions": [
+        "send_calendar_confirmation",
+        "send_pre_meeting_questionnaire",
+        "add_to_crm_with_qualification_notes"
+      ],
+      "24_hour_follow_up": [
+        "send_industry_specific_case_study",
+        "send_roi_calculator_link",
+        "send_technical_integration_guide"
+      ],
+      "pre_meeting_sequence": [
+        "send_agenda_and_meeting_prep",
+        "send_demo_environment_setup",
+        "send_stakeholder_invitation_template"
+      ]
+    },
+    "post_content_delivery": {
+      "immediate_actions": [
+        "send_promised_content",
+        "add_to_nurture_sequence",
+        "set_follow_up_reminder_5_days"
+      ],
+      "5_day_follow_up": [
+        "check_content_engagement",
+        "send_additional_resources",
+        "offer_brief_consultation"
+      ],
+      "14_day_follow_up": [
+        "send_new_case_study",
+        "offer_peer_reference_call",
+        "provide_market_insights"
+      ]
+    },
+    "post_callback_scheduled": {
+      "immediate_actions": [
+        "send_callback_confirmation",
+        "add_calendar_reminder",
+        "prepare_personalized_talking_points"
+      ],
+      "pre_callback_preparation": [
+        "research_company_recent_news",
+        "prepare_industry_specific_insights",
+        "identify_potential_pain_points"
+      ]
+    },
+    "post_referral_received": {
+      "immediate_actions": [
+        "send_thank_you_note",
+        "research_referral_background",
+        "prepare_warm_introduction_approach"
+      ],
+      "referral_contact_sequence": [
+        "mention_referrer_in_opening",
+        "customize_value_prop_for_referral",
+        "offer_referrer_update_on_outcome"
+      ]
+    }
+  }
+}
