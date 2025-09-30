@@ -9,7 +9,6 @@ By implementing everything from the multi-stage intent classification to the con
 
 ## System Architecture
 <img width="1336" height="700" alt="architecure" src="https://github.com/user-attachments/assets/4650aab3-8c38-4c84-809c-a3e0b39184fc" />
-
 The system enforces a strict separation of **conversational control flow** (Python engine) and **conversational content** (JSON configuration). The engine defines how dialogue is executed; the JSON defines what content is authorized and when it is emitted. Switching domains (sales, support, onboarding) is a configuration-only change; engine code is unaffected.
 
 ### Core Components
@@ -29,7 +28,6 @@ The system enforces a strict separation of **conversational control flow** (Pyth
 
 A user input traverses a deterministic, multi-stage processing pipeline.
 <img width="1339" height="1793" alt="sequence (1)" src="https://github.com/user-attachments/assets/9a1b9d81-508c-4b4f-9826-c505b3cea370" />
-
 #### **Step 1: Ingestion & State Update**
 
 The `llm_bot_engine` records the input in history and updates `ConversationState` (current node plus metadata).
@@ -77,9 +75,7 @@ Emit the response. The `AnalyticsTracker` records the outcome and updates engage
 ## The Blueprint: The JSON Decision Tree
 
 Engine logic is generic. The knowledge and flow are defined by a JSON file (`sales_flow.json`), which is the single source of truth for bot behavior.
-
 <img width="619" height="1162" alt="decision_tree" src="https://github.com/user-attachments/assets/daeba95a-2e74-4d23-a394-e1d5f6b1e663" />
-
 ### Key Concepts:
 
 - **`nodes`**: Conversation states (e.g., `OPENING_WARM_INTRODUCTION`, `OBJECTION_BUDGET_CONSTRAINTS`) with script and exits.
